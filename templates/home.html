@@ -5,7 +5,7 @@
 {% load crispy_forms_tags %}
 {% load thumbnail %}
 
-{% block title %}{{ block.super }}Article Archive{% endblock %}
+{% block title %}{{ block.super }}Home{% endblock %}
 
 {% block navbar-left %}
   {% include "_navbar.html" with active_link="home" %}
@@ -42,6 +42,8 @@
             <hr>
             <!-- Blog Entries Column -->
             <div class="col-md-8" style="background-image: url('static/site/image/bs.jpg');font-style: italic;border:2px inset" >
+
+
 
                 <!-- First Blog Post -->
                 {% for article in object_list %}
@@ -87,60 +89,69 @@
                     <!-- /.input-group -->
                 </div>
 
-            <div class="well" style="border:2px inset grey">
+                <!-- Blog Categories Well -->
+                <div class="well" style="border:2px inset grey">
                     <h4>Categories</h4>
                     <div class="row">
-                    <ul>
-                            {% for i in SIDEBAR_ARTICLES %}
-                                <li><a href="#">{{ i.name }}</a></li>
-                                </li>
+                        <div class="col-lg-6">
+                            <ul class="list-unstyled">
+
+                            </ul>
+
+                            {% for tag in SIDEBAR_ARTICLES %}
+                                <p>{{ tag.name }}</p>
                             {% endfor %}
-                    </ul>
-                    </div>
-                </div>
-
-                 <div class="well" style="border:2px inset grey">
-                    <h4> <i class="fa fa-facebook fa-fw fa-2x"></i>Facebook Page</h4>
-                     <div class="fb-page"
-                          data-href="https://www.facebook.com/TechfendGhana/"
-                          data-width="380"
-                          data-hide-cover="false"
-                          data-show-facepile="false">
                         </div>
-                        <div id="fb-root"></div>
-                        <script>(function(d, s, id) {
-                          var js, fjs = d.getElementsByTagName(s)[0];
-                          if (d.getElementById(id)) return;
-                          js = d.createElement(s); js.id = id;
-                          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10";
-                          fjs.parentNode.insertBefore(js, fjs);
-                        }(document, 'script', 'facebook-jssdk'));
-                        </script>
-                    <!-- /.input-group -->
-                </div>
+                        <!-- /.col-lg-6 -->
 
-                <div class="well" style="border:2px inset grey ;overflow:auto ">
-                    <h4> <i class="fa fa-twitter fa-fw fa-2x"></i>Tweets</h4>
+                        <!-- /.col-lg-6 -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <div class="well" style="border:2px inset grey ">
+                    <h4> <i class="fa fa-facebook fa-fw fa-2x"></i>Facebook</h4>
+                    <div class="fb-page"
+                      data-href="https://www.facebook.com/TechfendGhana/"
+                      data-width="380"
+                      data-hide-cover="false"
+                      data-show-facepile="false">
+                    </div>
+                    <div id="fb-root"></div>
+                    <script>(function(d, s, id) {
+                      var js, fjs = d.getElementsByTagName(s)[0];
+                      if (d.getElementById(id)) return;
+                      js = d.createElement(s); js.id = id;
+                      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10";
+                      fjs.parentNode.insertBefore(js, fjs);
+                    }(document, 'script', 'facebook-jssdk'));
+                    </script>
+                </div>
+                <div class="well" style="border:2px inset grey ">
+                     ">
+                    <h4> <i class="fa fa-twitter fa-fw fa-3x"></i>Tweets</h4>
                     <a class="twitter-timeline" href="https://twitter.com/reinrich14"
-                        data-height="500" data-width="600">
+                        data-width="700"
+                        data-height="500"
+                    ></a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-                    </a> <script   async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
                 </div>
+
                 <!-- Side Widget Well -->
                 <div class="well" style="border:2px inset grey ">
                     <h4>Recent Posts</h4>
-                    {% for article in SIDEBAR_LATEST %}
-                    <h4><a href={{ article.get_absolute_url }}><img class="img-responsive" src={{ article.image.url }} alt="" width="300"></a></h4>
-                        <h4><p><a href={{ article.get_absolute_url }}>{{ article.name }}</a></p></h4>
-                    <p></p>
+                    {% for article in article_list %}
+                    <h4><a href={{ article.get_absolute_url }}> {{article.name}}</a></h4>
+                    <p><img class="img-responsive" src={{ article.image.url }} alt="" width="300"></p>
                     <hr>
                     {% endfor %}
                 </div>
             </div>
 
         </div>
+
 </div>
 {% endblock container %}
+
 {% block scripts %}
 <script src="{% static 'site/js/site.js' %}"></script>
 {% endblock scripts %}

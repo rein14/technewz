@@ -80,7 +80,6 @@ class Article(models.Model):
     def get_absolute_url(self):
         return reverse('article', kwargs={'pk': self.pk})
     '''
-
     '''
     def get_comments(self):
         comments = Comments.objects.all()

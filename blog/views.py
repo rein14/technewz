@@ -3,6 +3,8 @@ from django.views import generic
 from django.shortcuts import get_object_or_404, render
 from django.http import Http404
 from .models import Article, Tag
+from django.views.decorators.cache import cache_page
+from django.utils.decorators import method_decorator
 
 
 class ArticleList(generic.ListView):
@@ -12,7 +14,7 @@ class ArticleList(generic.ListView):
     context_object_name = "article_list"
 
     def get_queryset(self):
-        return Article.objects.filter(publish=True)
+        return Article.objects.all().filter(publish=True)
 
 '''
 class ArticleShort(generic.ListView):
