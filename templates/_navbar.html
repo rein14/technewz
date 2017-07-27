@@ -1,0 +1,6 @@
+<li {% if active_link == "home" %}class="active"{% endif %}><a href="{% url 'home' %}"><span class="glyphicon glyphicon-home"></span>Home</a></li>
+<li {% if active_link == "about" %}class="active"{% endif %}><a href="{% url 'about' %}"><i class="glyphicon glyphicon-menu-hamburger"></i> About</a></li>
+<li {% if active_link == "articles" %}class="active"{% endif %}><a href={% url 'name:article' %} ><span class="glyphicon glyphicon-book"></span> Article</a></li>
+<li {% if active_link == "techfendgh" %}class="active"{% endif %}><a href="http://techfendghana.com"><span class="glyphicon glyphicon-arrow-right"></span>TechfendGH</a></li>
+<li {% if active_link == "contact" %}class="active"{% endif %}><a href={% url 'contact' %}><span class="glyphicon glyphicon-phone"></span> Contact</a></li>
+<li {% if active_link == "rss" %}class="active"{% endif %}><a href={% url 'latest' %}><span class="fa fa-rss "></span> RSS</a></li>

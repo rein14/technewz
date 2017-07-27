@@ -1,0 +1,9 @@
+{% load twitter_feed_tags %}
+
+
+	{% for tweet in tweets %}
+      <div class="tweet">
+	    <p>{{ tweet.content }}</p>
+    	<p class="date">{{ tweet.published_at}}</p>
+      </div>
+	{% endfor %}

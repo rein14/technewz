@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ block.super }}Home{% endblock %}
+
+{% block navbar-left %}
+  {% include "_navbar.html" with active_link="home" %}
+{% endblock %}
+
+
+
+{% block splash %}
+
+    <header class="intro-header" style="background-image: url('/static/site/img/ner.jpg');font-family: 'Eras Bold ITC',serif; font-style: italic;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<div class="site-heading" style="color: #0c516c;">
+                        <h1>TechNewz</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock splash %}
+
+{% block container %}
+<!-- Benefits of the Django application -->
+<a name="about"></a>
+<div class="container">
+
+
+        <div class="row">
+
+            <!-- Blog Entries Column -->
+            <div class="col-md-8">
+
+                <h1 class="page-header">
+                    About
+                    <small>Us</small>
+                </h1>
+                <h4><p>Currently we are a team of two developers trying to take on the world. Passionate about technology and entrepreneurship. Huge Funs of Django and members of the python community. <p>Thought of sharing some thoughts on this site, as well as some bits of code that have been useful.</p> Hope you find it useful too.
+
+                    This site was built with Django and a couple of tools out there. We hand coded this blog engine.<p></p> <p> Theres a lot things you learn in building things your self. Maybe you should try doing that sometimes...It helps. I just thought it would be fun.</p> I documented this process in case you're interested.Lets see how best we can change the world
+                    <p></p><p>Need help with your project..Goto contact page and send us a mail.</p>
+                </p>
+                </h4>
+
+
+            </div>
+        </div>
+
+</div>
+    <div id="sec2" class="text-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 text-center">
+        <h2>Meet The Team</h2>
+        <p class="lead">Behind the scenes</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="text-center"><img class="img-circle centered" src="http://lorempixel.com/128/128/people/9/" alt="profile pic"></div>
+        <p class="heavy text-center">rein</p>
+        <h2> </h2>
+        <p> </p>
+      </div>
+      <div class="col-lg-4">
+        <div class="text-center"><img class="img-circle centered" src="http://lorempixel.com/128/128/people/2/" alt="profile pic"></div>
+        <p class="heavy text-center">rein</p>
+        <h2>  </h2>
+        <p> </p>
+      </div>
+
+    </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock container %}

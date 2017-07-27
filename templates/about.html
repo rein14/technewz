@@ -1,0 +1,90 @@
+div class="container">
+
+
+        <div class="row">
+
+            <!-- Blog Entries Column -->
+            <div class="col-md-8">
+
+                <h1 class="page-header">
+                    Welcome
+                    <small>Read</small>
+                </h1>
+
+                <!-- First Blog  -->
+                {% for article in object_list %}
+                <h2>
+                    <a href={{article.get_absolute_url }}>{{ article.name }}</a>
+                </h2>
+                </p>
+                <hr>
+                <img class="img-responsive" src="/static/ite/img/banner.jpg" alt="">
+                    <h4><p><span class="glyphicon glyphicon-time"></span> Posted on {{ article.created_at }}     by <p> </p> <span class="glyphicon glyphicon-king"> </span> <a href="">{{ article.author.get_full_name }}</a></p></h4>
+                <hr>
+                <p>{{ article.content|safe|truncatechars:1000 }}</p>
+                <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-arrow-right"> </span></a>
+                    <hr>
+                {% endfor %}
+                <hr>
+
+                <!-- Pager -->
+                <ul class="pager">
+                    <li class="previous">
+                        <a href="#">&larr; Older</a>
+                    </li>
+                    <li class="next">
+                        <a href="#">Newer &rarr;</a>
+                    </li>
+                </ul>
+
+            </div>
+
+            <!-- Blog Sidebar Widgets Column -->
+            <div class="col-md-3" >
+
+                <!-- Blog Search Well -->
+                <div class="well">
+                    <h4>Blog Search</h4>
+                    <div class="input-group">
+                        <input type="text" class="form-control">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit">
+                                <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                        </span>
+                    </div>
+                    <!-- /.input-group -->
+                </div>
+
+                <!-- Blog Categories Well -->
+                <div class="well">
+                    <h4>Blog Categories</h4>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="list-styled">
+                                <ul>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                            </ul>
+                        </div>
+                </div>
+                    </div>
+
+                <!-- Side Widget Well -->
+              <div class="well">
+                  {% for article in object_list %}
+                    <h4>{{ article.name }}</h4>
+                    <p>{{ article.content|safe|truncatechars:300 }}</p>
+                         <hr>
+                {% endfor %}
+
+
+            </div>
+
+        <hr>

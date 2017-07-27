@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+{% load thumbnail %}
+
+{% block title %}{{ block.super }}Article Content{% endblock %}
+{% block navbar-left %}
+  {% include "_navbar.html" with active_link="home" %}
+{% endblock %}
+
+{% block splash %}
+
+    <header class="intro-header" style="background-image: url('/static/site/img/bg.jpg');font-family: 'Eras Bold ITC',serif; font-style: italic;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<div class="site-heading" style="color: #0c516c;">
+                        <h1>TechNewz</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock splash %}
+
+
+{% block container %}
+
+<div class="container">
+
+        <div class="row">
+            <p>
+
+            </p>
+            <hr>
+            <!-- Blog Entries Column -->
+            <div class="col-md-8" style="border:2px inset">
+
+                <h1 class="page-header">
+                    Article
+                    <small>Archive</small>
+                </h1>
+
+                <!-- First Blog Post -->
+
+                <h2>
+                    <a href={{ object.get_absolute_url }}>{{ object.name }}</a>
+                </h2>
+                <p class="lead">
+                    by <a href="">
+                    <img src="{% thumbnail object.author.profile.picture|default:'default_profile.png' 30x30 crop %}" alt="" />
+                    {{article.author.get_full_name}}</a>
+                </p>
+                <p><span class="glyphicon glyphicon-time"></span> Posted on {{ object.created_at }}</p>
+                <hr>
+                <img class="img-responsive" src={{ object.image.url }} alt="" height="200px">
+                <p><span class="glyphicon glyphicon-time"></span> Posted on {{ object.created_at }}</p>
+
+                <hr>
+                <p>{{ object.content|safe}}</p>
+                <hr>
+            </div>
+
+            <!-- Blog Sidebar Widgets Column -->
+            <div class="col-md-4" style="font-style: italic">
+
+                <!-- Blog Search Well -->
+                <div class="well" style="border:2px inset grey">
+                    <h4>About Us</h4>
+                    <div class="input-group">
+                        <h4>Writing about anything tech that pops into our minds.
+                            Sharing bits of codes and other stuff  found to be interesting or useful.</h4>
+                    </div>
+                    <!-- /.input-group -->
+                </div>
+             <!-- Blog Categories Well -->
+                <div class="well" style="border:2px inset grey">
+                    <h4>Categories</h4>
+                    <div class="row">
+                    <ul>
+                            {% for i in SIDEBAR_ARTICLES %}
+                                <li><a href="#">{{ i.name }}</a></li>
+                                </li>
+                            {% endfor %}
+                    </ul>
+                    </div>
+                </div>
+
+                 <div class="well" style="border:2px inset grey">
+                    <h4> <i class="fa fa-facebook fa-fw fa-2x"></i>Facebook Page</h4>
+                     <div class="fb-page"
+                          data-href="https://www.facebook.com/TechfendGhana/"
+                          data-width="380"
+                          data-hide-cover="false"
+                          data-show-facepile="false">
+                        </div>
+                        <div id="fb-root"></div>
+                        <script>(function(d, s, id) {
+                          var js, fjs = d.getElementsByTagName(s)[0];
+                          if (d.getElementById(id)) return;
+                          js = d.createElement(s); js.id = id;
+                          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10";
+                          fjs.parentNode.insertBefore(js, fjs);
+                        }(document, 'script', 'facebook-jssdk'));
+                        </script>
+                    <!-- /.input-group -->
+                </div>
+
+                <div class="well" style="border:2px inset grey ;overflow:auto ">
+                    <h4> <i class="fa fa-twitter fa-fw fa-2x"></i>Tweets</h4>
+                    <a class="twitter-timeline" href="https://twitter.com/reinrich14"
+                        data-height="500" data-width="600">
+
+                    </a> <script   async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+                <!-- Side Widget Well -->
+                <div class="well" style="border:2px inset grey ">
+                    <h4>Recent Posts</h4>
+                    {% for article in SIDEBAR_LATEST %}
+                    <h4><a href={{ article.get_absolute_url }}><img class="img-responsive" src={{ article.image.url }} alt="" width="300"></a></h4>
+                        <h4><p><a href={{ article.get_absolute_url }}>{{ article.name }}</a></p></h4>
+                    <p></p>
+                    <hr>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{% static 'site/js/site.js' %}"></script>
+{% endblock scripts %}
