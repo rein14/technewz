@@ -1,3 +1,2 @@
 # technewz
-## First Django project
-## Blog built django
+First Django project (Blog built with django)
